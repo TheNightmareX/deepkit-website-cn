@@ -1,0 +1,406 @@
+<div class="page">
+    <product-banner header="RPC" id="rpc">
+        <p> The fastest way to connect your frontend with your backend or interconnect your micro-services with
+            automatic
+            serialization, validation, error forwarding, fully typsafe interface, and streaming capabilities using RxJS
+            <br/> —
+            without code generation or config files, all TypeScript.
+        </p>
+    </product-banner>
+
+    <div class="line"></div>
+
+    <div class="wrapper banner-features">
+        <div>
+            <h3>Flexible</h3>
+            <div>
+                <img src="/assets/images/rpc-visual.svg"/>
+            </div>
+        </div>
+
+        <div>
+            <h3>High performance</h3>
+
+            <div>
+                <performance-chart yAxis="ops/second via TCP single-core" sort="asc" format="0.0-0">
+                    <performance-entry title="gRPC-js" [value]="6138"></performance-entry>
+                    <performance-entry title="Deepkit RPC" [value]="41821"></performance-entry>
+                </performance-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper benchmark-link">
+        <a routerLink="/benchmarks">More information about our benchmarks</a>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="wrapper how-it-works">
+        <h2>How it works</h2>
+        <p>
+            You write your controller interface (actions) and models (parameter and return types)
+            in a shared library/package that can be imported by frontend/client and server.
+        </p>
+        <p>
+            <strong>The server</strong> implements the interface using a simple TypeScript class and decorators.<br/>
+            <strong>The client</strong> consumes the interface with a client that automatically serializes
+            and executes the action on the server.
+        </p>
+        <div class="client-server">
+            <div>
+                <h4>Client</h4>
+                <p>Angular, React, Vue, HTML5, Node.</p>
+                <textarea codeHighlight>
+import {DeepkitClient} from '@deepkit/rpc';
+import {MyControllerInterface} from 'common';
+
+//connect via WebSockets/TCP, or in-memory for SSR
+const client = new DeepkitClient('localhost');
+const ctrl = client.controller(MyControllerInterface);
+
+const user = await ctrl.getUser(42);
+console.log(user.username);
+console.log(user instanceof User); //true
+      </textarea>
+            </div>
+            <div>
+                <h4>Server</h4>
+                <p>Using TypeScript classes.</p>
+                <textarea codeHighlight>
+import {rpc} from '@deepkit/rpc';
+import {MyControllerInterface, User} from 'common';
+
+@rpc.controller(MyControllerInterface)
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    async getUser(id: number): Promise<User> {
+        return new User(id);
+    }
+}
+      </textarea>
+            </div>
+        </div>
+        <div class="common">
+            <h4>Common</h4>
+            <p>
+                In a common package shared with server and client you define your interface and models.
+            </p>
+            <textarea codeHighlight>
+@entity.name('user')
+export class User {
+    username: string = '';
+    constructor(public id: number) {}
+}
+
+export MyControllerInterface = Controller<MyControllerInterface>('my', [User]);
+export interface MyControllerInterface {
+     async getUser(id: number): Promise<User>;
+}
+        </textarea>
+            <p>
+                Note: Both the client and server can register a controller, and both can consume a controller making the
+                communication flow in both direction. This example demonstrates the simplest use-case where the server
+                registers a controller and a client connecting via TCP/WebSockets consumes that controller.
+            </p>
+        </div>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="page-text">
+        <div class="line"></div>
+
+        <h2>Simple class methods</h2>
+
+        <p>
+            RPC actions are simple class methods, decorated with @rpc.action(). Parameter and return type are inferred
+            as much as possible using Deepkit Type.
+            Types that can't be inferred from TypeScript's emitDecoratorMetadata can be manually annotated using Deepkit
+            Type. Fully type-safe since you import the TypeScript interface of your controller in your clients directly.
+            You can even share your database models from Deepkit ORM and return them directly in your RPC action.
+        </p>
+
+        <textarea codeHighlight>
+import {rpc} from '@deepkit/rpc';
+import {MyControllerInterface, User} from 'common';
+
+@rpc.controller(MyControllerInterface)
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    async getUser(id: number): Promise<User> {
+        return new User(id);
+    }
+
+    @rpc.action()
+    async labelUser(id: number, labels: string[]): Promise<{[name: string]: number}> {
+        return labels.map(v => {
+            return {v: 1};
+        });
+    }
+}
+        </textarea>
+
+        <h2>Type serialization</h2>
+        <p>
+            Data types of action parameters and its return type like String, Number, Boolean, Date, arrays, typed
+            arrays,
+            objects, and custom entities are serialized automatically back and forth using a flexible and fast binary
+            protocol.
+        </p>
+        <textarea codeHighlight>
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    async getUser(id: number): Promise<User> {
+        return new User(id);
+    }
+
+    @rpc.action()
+    hello(name: string): string {
+        return 'Hello ' + name;
+    }
+
+    @rpc.action()
+    async uploadFile(data: Uint8Array): Promise<boolean> {
+        return true;
+    }
+}
+        </textarea>
+
+        <h2>Parameter validation</h2>
+        <p>
+            All parameters are automatically validated on the server side to make sure
+            even malicious clients can't send invalid requests.
+        </p>
+        <p>
+            Use all available validators from Deepkit Type, or write your own validation functions.
+        </p>
+        <p>
+            When invalid parameters are sent a <code>ValidationError</code> object is thrown
+            with detailed error code and message for each parameter, that
+            can be nicely shown in the user interface.
+        </p>
+        <textarea codeHighlight>
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    async getUser(id: number & Positive & Maximum<10000>): Promise<User> {
+        return new User(id);
+    }
+
+    @rpc.action()
+    hello(name: string & Exclude<' '>): string {
+        return 'Hello ' + name;
+    }
+
+    @rpc.action()
+    async uploadFile(data: Uint8Array & MaxLength<1048000>): Promise<boolean> {
+        return true;
+    }
+}
+      </textarea>
+
+        <h2>RxJS streaming</h2>
+        <p>
+            Streaming data to the client shouldn't be hard. That's why Deepkit RPC
+            supports RxJS Observable, Subject, and BehaviorSubject natively.
+        </p>
+
+        <p>
+            Just return a Observable in an action and the client receives an observable
+            as well, that forwards all emitted values — of course automatically serialized.
+        </p>
+
+        <p>
+            As soon as the client unsubscribes the Observable the same Observable
+            is completed on the server side as well and triggers the <code>unsubscribe</code> callback.
+        </p>
+
+        <p>
+            All Observables and subscriptions are automatically closed when the client disconnects.
+        </p>
+
+        <textarea codeHighlight>
+// client
+const client = new DeepkitClient('localhost');
+const ctrl = client.controller(MyControllerInterface);
+
+const sensorData = await ctrl.sensorData();
+const sub = sensorData.subscribe((next) => {
+    console.log('sensor says', next);
+});
+
+//when done watching for data, but keeps Subject
+//on server alive, for other subscribers.
+sub.unsubscribe();
+
+const chat = await ctrl.getChatChannel('general');
+chat.subscribe((next) => {
+    console.log('sensor says', next);
+});
+
+//completes the whole Subject, triggering its TearDown
+chat.unsubscribe();
+      </textarea>
+
+        <textarea codeHighlight>
+// server
+class MyController implements MyControllerInterface {
+    protected sensorData = new Subject<number>();
+
+    @rpc.action()
+    sensorData(): Subject<number> {
+        // return already existing subjects
+        return sensorData;
+    }
+
+    @rpc.action()
+    getChatChannel(
+        name: string
+    ): Subject<{user: string, message: string} {
+        const subject = new Subject();
+
+        const interval = setInterval(() => {
+            subject.next({
+                user: 'bot', message: 'It is time!'
+            });
+        });
+        //add tearDown function, when client closes
+        subject.subscribe().add(() => {
+            clearInterval(interval);
+        });
+
+        return subject;
+    }
+
+    @rpc.action()
+    async subscribeNumbers(): Observable<number> {
+        return new Observable((observer) => {
+          console.log('new subscription!');
+          observer.next(42);
+
+          return {unsubscribe() {
+            console.log('subscription ended');
+          }};
+        });
+    }
+}
+      </textarea>
+
+        <h2>Error forwarding</h2>
+        <p>
+            If an error is throwing in an action on the server,
+            it is automatically serialized and forwarded to the client.
+        </p>
+
+        <p>
+            Custom error classes can also be used the same as with
+            custom entity classes.
+        </p>
+
+        <textarea codeHighlight>
+//client.ts
+const client = new DeepkitClient('localhost');
+const ctrl = client.controller(MyControllerInterface);
+
+try {
+    const sensorData = await ctrl.sensorData('a');
+} catch (error) {
+    error.message === 'No sensor a';
+}
+
+try {
+    await ctrl.customError();
+} catch (error) {
+    error instanceof MyCustomError; //true
+}
+
+      </textarea>
+
+        <textarea codeHighlight>
+//common.ts
+@entity.name('@error/my-custom')
+class MyCustomError extends Error {
+    codes: string[] = [];
+}
+      </textarea>
+
+        <textarea codeHighlight>
+//server.ts
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    getSensorData(name: string): Subject<number> {
+        if (name === 'temp') return this.tempSensor;
+        throw new Error(`No sensor ${name}`);
+    }
+
+    @rpc.action()
+    customError(): string {
+        const error = new MyCustomError();
+        error.codes = ['a', 'b'];
+        throw error;
+    }
+}
+      </textarea>
+
+        <h2>Peer2Peer</h2>
+        <p>
+            A client can register a peer controller under a global identifier which
+            can be consumed by other clients. This allows to communicate from client to client
+            without routing it manually as a pub/sub router (@deepkit/broker) or in-memory router
+            is implemented out of the box.
+        </p>
+
+        <p>
+            A security layer allows to control whether a client can register as peer or consume peer controllers.
+        </p>
+
+        <h2>Security</h2>
+
+        <p>
+            You can configure an arbitrary token as login and control for each action whether a client is
+            allowed to execute. A session system enables you to retrieve and store session related values.
+        </p>
+
+        <h2>Download/Upload progress</h2>
+        <p>
+            Bigger packages are chunked automatically and allow you to monitor the upload and download progress.
+        </p>
+
+        <textarea codeHighlight>
+//client.ts
+const client = new DeepkitClient('localhost');
+const ctrl = client.controller(MyControllerInterface);
+
+const progress = ClientProgress.track();
+progress.upload.subscribe(progress => {
+    console.log('upload progress',
+        progress.upload.total, progress.current,);
+});
+await ctrl.uploadFile(new Uint8Array(1024*1024));
+
+const progress2 = ClientProgress.track();
+progress2.download.subscribe(progress => {
+    console.log('download progress',
+        progress2.download.total, progress2.download.current,
+    );
+});
+const zip = await ctrl.downloadFile('file.zip');
+
+      </textarea>
+
+        <textarea codeHighlight>
+//server.ts
+class MyController implements MyControllerInterface {
+    @rpc.action()
+    uploadFile(data: Uint8Array): Promise<boolean> {
+        return true;
+    }
+
+    @rpc.action()
+    downloadFile(path: string): Promise<Uint8Array> {
+        return new Uint8Array(1024*1024);
+    }
+}
+      </textarea>
+    </div>
+</div>

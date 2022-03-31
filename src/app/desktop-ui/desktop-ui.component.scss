@@ -1,0 +1,59 @@
+
+:host ::ng-deep {
+  pre.code {
+    margin: 6px 0;
+
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    color: #abb2bf;
+    background: #282c34;
+  }
+}
+
+//:host-context(body.light) ::ng-deep pre.code {
+//  background: #f8f8f8;
+//}
+
+.preview {
+  position: relative;
+  z-index: 101;
+  padding: 150px 0;
+  background-color: #000;
+  background-image: url('/assets/desktop-ui/bg.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  .wrapper {
+    max-width: 1300px;
+  }
+
+  ::ng-deep {
+    p {
+      font-size: 13px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    h2, h3 {
+      margin: 10px 0;
+    }
+  }
+}
+
+.dui-body {
+  background: var(--dui-window-content-bg-trans);
+}
+
+::ng-deep dui-window {
+  box-shadow: 0 15px 22px 0 rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  background: var(--dui-window-content-bg-trans) !important;
+}
+
+:host-context(body.dark) ::ng-deep dui-window {
+  background: #323232dd !important;
+}

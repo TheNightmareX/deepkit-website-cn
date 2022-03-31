@@ -1,0 +1,144 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 101;
+  margin: 75px auto;
+}
+
+.wrapper {
+  max-width: 1500px;
+}
+
+.layout {
+  display: flex;
+  height: 500px;
+  text-align: left;
+  //border: 1px solid #b5b5b5;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+  color: #eee;
+  //box-shadow: 0 5px 18px 0 rgba(0, 0, 0, 0.15);
+  overflow: visible;
+
+  > * {
+    flex: 0 0 50%;
+    height: 100%;
+    overflow: visible;
+  }
+}
+
+@media(max-width: 750px) {
+  .layout {
+    display: block;
+    height: unset;
+
+    > div {
+      min-height: 300px;
+    }
+
+    .browser {
+      border-left: 0;
+      border-top: 1px solid #666;
+    }
+
+  }
+}
+
+pre {
+  padding: 15px;
+  margin: 0;
+}
+
+.dql {
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  font-size: 14px;
+  padding: 2px 5px;
+}
+
+.browser {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #666;
+
+  .actions {
+    flex: 0 0 32px;
+    padding: 0 10px;
+    border-bottom: 1px solid #666;
+  }
+
+  .content {
+    flex: 1;
+    overflow: auto;
+    overflow: overlay;
+    scrollbar-width: thin;
+  }
+
+  .console {
+    flex: 1;
+    border-top: 1px solid #666;
+    font-size: 13px;
+    overflow: auto;
+    overflow: overlay;
+
+    > div {
+      padding: 0 5px;
+      white-space: pre-line;
+      border-bottom: 1px solid #444;
+    }
+  }
+}
+
+.tables {
+  padding: 15px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  select {
+    height: 22px;
+  }
+
+  button {
+    padding: 4px 12px;
+  }
+
+  .tabs {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button.tab {
+    border-radius: 2px;
+    border: 0;
+    background-color: transparent;
+    outline: 0;
+    margin: 0 3px;
+    background-image: none;
+
+    &:hover {
+      background-color: #116fec;
+      color: white;
+    }
+
+    &.active {
+      background-color: #0e6dea;
+      color: white;
+    }
+
+    &:active {
+      background-color: #0c66dd;
+      color: white;
+    }
+  }
+}

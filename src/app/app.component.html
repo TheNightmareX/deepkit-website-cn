@@ -1,0 +1,5 @@
+<dw-header *ngIf="header" [startPage]="startPage" [fromStartPage]="fromStartPage"></dw-header>
+
+<router-outlet></router-outlet>
+
+<dw-footer *ngIf="!startPage"></dw-footer>

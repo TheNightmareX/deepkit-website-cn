@@ -1,0 +1,270 @@
+<div class="page">
+    <div class="wrapper">
+        <div class="overline">INTRODUCING</div>
+
+        <h1>HIGH PERFORMANCE<br/>TYPESCRIPT FRAMEWORK</h1>
+    </div>
+
+    <main>
+        <div class="overline">ALPHA</div>
+        <p class="tagline">
+            High-quality TypeScript libraries and a framework that brings everything together.<br/>
+            Precisely aligned, gently optimised, solid engineered.
+        </p>
+
+        <p>
+            <a class="button" routerLink="/blog/introducing-deepkit-framework">read introduction</a>
+        </p>
+
+        <div class="two-column feature-with-code">
+            <div>
+                <div class="overline">TYPESCRIPT</div>
+                <h2>RUNTIME TYPES</h2>
+
+                <p class="feature-text">
+                    A runtime type system for JavaScript, powered by TypeScript types.
+                    Deepkit's type compiler makes it possible to use the whole TypeScript type system in any
+                    JavaScript runtime for the first time enabling completely new ways of writing data driven applications.
+                </p>
+            </div>
+            <div class="code-box">
+                <textarea codeHighlight>
+                    type status = 'pending' | 'running' | 'finished';
+                    // ['pending', 'running', 'finished']
+                    valuesOf<status>();
+
+
+                    interface User {
+                        id: integer & PrimaryKey;
+                        created: Date;
+                        username: string & MaxLength<3> & Unique;
+                        email: Email;
+                        firstName?: string;
+                        lastName?: string;
+                    }
+
+                    // Full access to all computed type information
+                    const reflection = ReflectionClass.from<User>();
+
+                    // Type information of arbitrary type expressions
+                    // {kind: ReflectionKind.class, types: [...]
+                    typeOf<Pick<User, 'id' | 'username'>>();
+                </textarea>
+            </div>
+        </div>
+
+        <div class="feature-framework">
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        ORM
+                        <p>
+                            MySQL, PostgreSQL, SQLite, MongoDB
+                        </p>
+                    </td>
+                    <td rowspan="2">Runtime<br/>Types</td>
+                    <td>Validation</td>
+                    <td style="width: 250px;" colspan="2">Reflection</td>
+                </tr>
+                <tr>
+                    <td>Serialization</td>
+                    <td colspan="2">Workflow Engine</td>
+                </tr>
+                <tr>
+                    <td>HTTP Router</td>
+                    <td style="background: transparent" rowspan="3" colspan="2">
+                        <h2>FRAMEWORK</h2>
+                        <p class="feature-text">
+                            A framework that brings aligned libraries together to
+                            make web application development faster, more productive, and easier than ever.
+                        </p>
+                    </td>
+                    <td colspan="2">Event System</td>
+                </tr>
+                <tr>
+                    <td>Configuration</td>
+                    <td>Broker</td>
+                    <td>Modules</td>
+                </tr>
+                <tr>
+                    <td>Profiler</td>
+                    <td>Debugger</td>
+                    <td>BSON</td>
+                </tr>
+                <tr>
+                    <td>Template Engine</td>
+                    <td colspan="2">Dependency Injection</td>
+                    <td>RPC</td>
+                    <td>CLI</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="two-column feature-with-code">
+            <div>
+                <div class="overline">TYPESCRIPT</div>
+                <h2>THE BEAUTY OF TYPES</h2>
+
+                <p class="feature-text">
+                    Powerful dependency injection container with type expressions to
+                    make HTTP routes, CLI commands, and RPC controllers safe, fast, and easy to write.
+                </p>
+
+                <p class="feature-text">
+                    No json configuration files, unnecessary boilerplate, schema files, or code generation:
+                    TypeScript utilized to its fullest capabilities.
+                </p>
+            </div>
+            <div class="code-box">
+                <textarea codeHighlight>
+                    class UserAPI {
+                        constructor(private database: Database) {
+                        }
+
+                        @http.GET('/user/:id')
+                        async user(id: integer & Positive): Promise<User> {
+                            return await this.database.query(User)
+                                .filter({id})
+                                .findOne();
+                        }
+
+                        @http.GET('/user')
+                        async users(
+                            limit: HttpQuery<integer> & Maximum<100> = 10
+                        ): Promise<User[]> {
+                            return await this.database.query(User)
+                                .limit(limit)
+                                .find();
+                        }
+                    }
+
+                    new App({
+                        controllers: [UserAPI],
+                        imports: [new FrameworkModule()]
+                    }).run();
+                </textarea>
+            </div>
+        </div>
+
+        <div class="feature-block">
+            <div class="overline">DEV TOOLS</div>
+            <h2>DEBUGGER</h2>
+
+            <p class="feature-text">
+                One of the most advanced dev tool experience in web frameworks.
+            </p>
+
+            <image-slider>
+                <image src="/assets/screenshots-profiler/overview.png"></image>
+                <image src="/assets/screenshots/debugger-http.png"></image>
+                <image src="/assets/screenshots/debugger-http-light.png"></image>
+                <image src="/assets/screenshots/debugger-modules.png"></image>
+                <image src="/assets/screenshots/debugger-events.png"></image>
+                <image src="/assets/screenshots/debugger-configuration.png"></image>
+                <image src="/assets/screenshots/debugger-api-http.png"></image>
+            </image-slider>
+        </div>
+
+        <div class="feature-block">
+            <h2>API CONSOLE</h2>
+
+            <p class="feature-text">
+                Debug HTTP and RPC APIs directly in the browser without any external tools.
+                Automatic API documentation from TypeScript types, for public or private audiences.
+            </p>
+
+            <image-slider>
+                <image src="/assets/screenshots/api-console-http-get.png"></image>
+                <image src="/assets/screenshots/api-console-http-post.png"></image>
+                <image src="/assets/screenshots/api-console-overview.png"></image>
+                <image src="/assets/screenshots/api-console-overview-detail.png"></image>
+                <image src="/assets/screenshots/api-console-overview-detail-get.png"></image>
+            </image-slider>
+        </div>
+
+        <div class="two-column feature-block">
+            <div style="flex-basis: 65%">
+                <div class="overline">THE FUTURE</div>
+                <h2>ISOMORPHIC TYPESCRIPT</h2>
+
+                <p class="feature-text">
+                    Dual stack is a relic from the past. Isomorphic TypeScript empowers you to write frontend, backend, cli tools, micro-service, apps,
+                    and much more with the very same language. Its single stack nature has huge potential to share code, knowledge, and interfaces across
+                    the whole application landscape.
+                </p>
+
+                <p class="feature-text">
+                    Deepkit provides solutions, libraries, and tools that are highly optimized and interoperate perfectly together to make isomorphic
+                    Typescript project a success — for browser and Node.
+                </p>
+            </div>
+            <div style="text-align: right; flex-basis: 35%">
+                <img alt="TypeScript logo" src="/assets/images/typescript-logo.svg"/>
+            </div>
+        </div>
+
+        <div class="feature-block">
+            <h2>HIGH PERFORMANCE</h2>
+
+            <p class="feature-text">
+                High performance in every fiber. From execution time to development time.
+            </p>
+            <p class="feature-text">
+                We are committed to building a framework that utilizes the power of isomorphic TypeScript and an ecosystem of libraries that are perfectly
+                optimized to work with each other to empower you to build applications faster than ever before.
+            </p>
+
+            <div class="banner-features">
+                <div>
+                    <h3>High Performance ORM</h3>
+                    <div>
+                        <performance-chart yAxis="ms / SQLite query 10k records">
+                            <performance-entry title="Sequelize" [value]="70.08"></performance-entry>
+                            <performance-entry title="MikroORM" [value]="40.76"></performance-entry>
+                            <performance-entry title="Prisma" [value]="37.59"></performance-entry>
+                            <performance-entry title="TypeORM" [value]="28.33"></performance-entry>
+                            <performance-entry title="Deepkit ORM" [value]="7.69"></performance-entry>
+                        </performance-chart>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Fastest MongoDB</h3>
+                    <div>
+                        <performance-chart yAxis="ms / MongoDB query 10k records">
+                            <performance-entry title="Mongoose" [value]="160.59"></performance-entry>
+                            <performance-entry title="MikroORM" [value]="89.95"></performance-entry>
+                            <performance-entry title="TypeORM" [value]="28.012"></performance-entry>
+                            <performance-entry title="Raw MongoClient" [value]="24.64"></performance-entry>
+                            <performance-entry title="Deepkit ORM" [value]="12.56"></performance-entry>
+                        </performance-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper benchmark-link">
+                <a routerLink="/benchmarks">More information about our benchmarks</a>
+            </div>
+        </div>
+
+        <div class="feature-block" style="text-align: center;">
+            <h2>MODULAR</h2>
+            <p class="feature-text">
+                Split the application in multiple modules and keep together what belongs together.
+            </p>
+
+            <image style="max-width: 506px; margin-top: 50px;" src="/assets/images/modular.png"></image>
+        </div>
+
+        <div class="feature-block">
+            <div class="overline">NOW</div>
+            <h2>LETS GO</h2>
+
+            <p class="feature-text">
+                Start now and get to know the new runtime type system in action.
+            </p>
+
+            <a class="button big" routerLink="/documentation/framework">Get started</a>
+        </div>
+
+    </main>
+</div>

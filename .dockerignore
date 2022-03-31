@@ -1,0 +1,9 @@
+node_modules
+dist
+!dist/app/package.json
+var
+Dockerfile
+debug
+.git
+deploy.sh
+.idea

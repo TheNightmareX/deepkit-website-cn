@@ -1,0 +1,39 @@
+:host {
+  flex: 1;
+  background-color: var(--color-dark2);
+  color: var(--color-blue-white);
+}
+
+dw-footer {
+  margin-top: 150px;
+}
+
+h1, h2, h3 {
+  color: var(--color-blue-white);
+}
+
+.text {
+  padding-top: 180px;
+  position: relative;
+}
+
+main {
+  position: relative;
+  padding-top: 130px;
+}
+
+.bg {
+  user-select: none;
+  -webkit-user-select: none;
+  position: absolute;
+  right: 0;
+  top: -50px;
+}
+
+.buttons {
+  margin-top: 50px;
+
+  .button {
+    margin-right: 10px;
+  }
+}
