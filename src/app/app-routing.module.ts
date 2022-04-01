@@ -68,7 +68,7 @@ import { DocORMCompositePrimaryKeyComponent } from './pages/documentation/orm/co
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: IndexPageComponent, data: { title: '欢迎', startPage: true } },
-    { path: 'contact', pathMatch: 'full', component: ContactPageComponent, data: { title: '练习' } },
+    { path: 'contact', pathMatch: 'full', component: ContactPageComponent, data: { title: '联系' } },
     {
         path: 'data-protection',
         component: DataProtectionPageComponent,
