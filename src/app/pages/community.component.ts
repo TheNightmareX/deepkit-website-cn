@@ -4,13 +4,12 @@ import { Component } from '@angular/core';
     template: `
         <div class="page">
             <div class="wrapper banner center">
-                <div class="overline">JOIN</div>
-                <h2>A NEW COMMUNITY</h2>
+                <div class="overline">加入</div>
+                <h2>新社区</h2>
 
                 <p class="feature-text">
-                    Be part of a community of developers who appreciate
-                    high performance and clean TypeScript code.
-                    Get free support, keep up to date, and chat with like-minded people.
+                    成为一个开发者社区的一部分，我们欣赏高性能与清爽的 TypeScript 代码。
+                    获得免费的支持、及时了解最新信息、与志同道合的人们交谈。
                 </p>
             </div>
 
