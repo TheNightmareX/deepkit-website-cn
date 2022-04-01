@@ -67,7 +67,7 @@ class BlogListItem {
             <h1>BLOG</h1>
 
             <div class="posts">
-                <post title="Introducing Deepkit Framework" by="Marc J. Schmidt" date="23. March 2022" url="introducing-deepkit-framework"></post>
+                <post title="介绍 DeepKit 框架" by="Marc J. Schmidt" date="23. March 2022" url="introducing-deepkit-framework"></post>
             </div>
         </div>
     `,
