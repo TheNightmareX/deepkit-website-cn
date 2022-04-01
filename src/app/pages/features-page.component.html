@@ -1,30 +1,30 @@
 <div class="page">
     <div class="wrapper">
-        <div class="overline">INTRODUCING</div>
+        <div class="overline">介绍</div>
 
-        <h1>HIGH PERFORMANCE<br/>TYPESCRIPT FRAMEWORK</h1>
+        <h1>高性能<br/>TYPESCRIPT 框架</h1>
     </div>
 
     <main>
-        <div class="overline">ALPHA</div>
+        <div class="overline">概述</div>
         <p class="tagline">
-            High-quality TypeScript libraries and a framework that brings everything together.<br/>
-            Precisely aligned, gently optimised, solid engineered.
+            高性能的 TypeScript 库，以及一个将所有东西聚合在一起的框架。<br/>
+            精确的集成，优雅的优化，坚实的工程。
         </p>
 
         <p>
-            <a class="button" routerLink="/blog/introducing-deepkit-framework">read introduction</a>
+            <a class="button" routerLink="/blog/introducing-deepkit-framework">阅读介绍</a>
         </p>
 
         <div class="two-column feature-with-code">
             <div>
                 <div class="overline">TYPESCRIPT</div>
-                <h2>RUNTIME TYPES</h2>
+                <h2>运行时类型</h2>
 
                 <p class="feature-text">
-                    A runtime type system for JavaScript, powered by TypeScript types.
-                    Deepkit's type compiler makes it possible to use the whole TypeScript type system in any
-                    JavaScript runtime for the first time enabling completely new ways of writing data driven applications.
+                    一个由 TypeScript 类型驱动的，为 JavaScript 打造的运行时类型系统。
+                    DeepKit 的类型编译器创新地使得在任何 JavaScript 运行时中使用整个 TypeScript 类型系统成为可能，
+                    解锁了全新的编写数据驱动的应用的方式。
                 </p>
             </div>
             <div class="code-box">
@@ -43,10 +43,10 @@
                         lastName?: string;
                     }
 
-                    // Full access to all computed type information
+                    // 对计算后的类型信息取得完全访问
                     const reflection = ReflectionClass.from<User>();
 
-                    // Type information of arbitrary type expressions
+                    // 任何类型表达式的类型信息
                     // {kind: ReflectionKind.class, types: [...]
                     typeOf<Pick<User, 'id' | 'username'>>();
                 </textarea>
@@ -62,38 +62,37 @@
                             MySQL, PostgreSQL, SQLite, MongoDB
                         </p>
                     </td>
-                    <td rowspan="2">Runtime<br/>Types</td>
-                    <td>Validation</td>
-                    <td style="width: 250px;" colspan="2">Reflection</td>
+                    <td rowspan="2">运行时<br/>类型</td>
+                    <td>验证</td>
+                    <td style="width: 250px;" colspan="2">反射</td>
                 </tr>
                 <tr>
-                    <td>Serialization</td>
-                    <td colspan="2">Workflow Engine</td>
+                    <td>序列化</td>
+                    <td colspan="2">工作流引擎</td>
                 </tr>
                 <tr>
-                    <td>HTTP Router</td>
+                    <td>HTTP 路由器</td>
                     <td style="background: transparent" rowspan="3" colspan="2">
-                        <h2>FRAMEWORK</h2>
+                        <h2>框架</h2>
                         <p class="feature-text">
-                            A framework that brings aligned libraries together to
-                            make web application development faster, more productive, and easier than ever.
+                            一个将所有的衍生的库组合在一起的框架，使得 Web 应用开发比以往更快速、更高效、更简单。
                         </p>
                     </td>
-                    <td colspan="2">Event System</td>
+                    <td colspan="2">事件系统</td>
                 </tr>
                 <tr>
-                    <td>Configuration</td>
+                    <td>配置</td>
                     <td>Broker</td>
-                    <td>Modules</td>
+                    <td>模块</td>
                 </tr>
                 <tr>
-                    <td>Profiler</td>
-                    <td>Debugger</td>
+                    <td>分析器</td>
+                    <td>调试器</td>
                     <td>BSON</td>
                 </tr>
                 <tr>
-                    <td>Template Engine</td>
-                    <td colspan="2">Dependency Injection</td>
+                    <td>模板引擎</td>
+                    <td colspan="2">依赖注入</td>
                     <td>RPC</td>
                     <td>CLI</td>
                 </tr>
@@ -103,16 +102,15 @@
         <div class="two-column feature-with-code">
             <div>
                 <div class="overline">TYPESCRIPT</div>
-                <h2>THE BEAUTY OF TYPES</h2>
+                <h2>类型之美</h2>
 
                 <p class="feature-text">
-                    Powerful dependency injection container with type expressions to
-                    make HTTP routes, CLI commands, and RPC controllers safe, fast, and easy to write.
+                    强大的带有类型表达式的依赖注入容器，使得 HTTP 路由、CLI 命令 以及 RPC 控制器安全、快速且易于编写。
                 </p>
 
                 <p class="feature-text">
-                    No json configuration files, unnecessary boilerplate, schema files, or code generation:
-                    TypeScript utilized to its fullest capabilities.
+                    无需 json 配置文件、不必要的样板、架构文件 或是代码生成：
+                    充分利用 TypeScript 以完全释放其全部能力。
                 </p>
             </div>
             <div class="code-box">
@@ -147,11 +145,11 @@
         </div>
 
         <div class="feature-block">
-            <div class="overline">DEV TOOLS</div>
-            <h2>DEBUGGER</h2>
+            <div class="overline">开发工具</div>
+            <h2>调试器</h2>
 
             <p class="feature-text">
-                One of the most advanced dev tool experience in web frameworks.
+                Web 框架中最高级的开发体验之一。
             </p>
 
             <image-slider>
@@ -166,11 +164,11 @@
         </div>
 
         <div class="feature-block">
-            <h2>API CONSOLE</h2>
+            <h2>API 控制台</h2>
 
             <p class="feature-text">
-                Debug HTTP and RPC APIs directly in the browser without any external tools.
-                Automatic API documentation from TypeScript types, for public or private audiences.
+                无需任何外部工具，直接在浏览器中调试 HTTP 与 RPC 的 API。
+                为公开或私密受众从 TypeScript 类型定义全自动生成文档。
             </p>
 
             <image-slider>
@@ -184,18 +182,16 @@
 
         <div class="two-column feature-block">
             <div style="flex-basis: 65%">
-                <div class="overline">THE FUTURE</div>
-                <h2>ISOMORPHIC TYPESCRIPT</h2>
+                <div class="overline">未来</div>
+                <h2>同构 TYPESCRIPT</h2>
 
                 <p class="feature-text">
-                    Dual stack is a relic from the past. Isomorphic TypeScript empowers you to write frontend, backend, cli tools, micro-service, apps,
-                    and much more with the very same language. Its single stack nature has huge potential to share code, knowledge, and interfaces across
-                    the whole application landscape.
+                    双栈是过去的遗物。同构的 TypeScript 使你可以使用相同的语言编写前端、后端、CLI 工具、微服务、应用，及更多。其单栈的本质拥有在整个应用场景下共享
+                    代码、知识、接口的巨大潜能。
                 </p>
 
                 <p class="feature-text">
-                    Deepkit provides solutions, libraries, and tools that are highly optimized and interoperate perfectly together to make isomorphic
-                    Typescript project a success — for browser and Node.
+                    DeepKit 提供高度优化且可完美互操作解决方案、库和工具，使得同构 TypeScript 取得胜利 —— 在浏览器和 Node。
                 </p>
             </div>
             <div style="text-align: right; flex-basis: 35%">
@@ -204,19 +200,18 @@
         </div>
 
         <div class="feature-block">
-            <h2>HIGH PERFORMANCE</h2>
+            <h2>高性能</h2>
 
             <p class="feature-text">
-                High performance in every fiber. From execution time to development time.
+                从开发过程到执行过程的每个细节都表现出高性能。
             </p>
             <p class="feature-text">
-                We are committed to building a framework that utilizes the power of isomorphic TypeScript and an ecosystem of libraries that are perfectly
-                optimized to work with each other to empower you to build applications faster than ever before.
+                我们致力于构建一个利用同构 TypeScript 强大功能的框架，和一个经过完美优化以相互协作的库生态系统，使你能够比以往任何时候都更快地构建应用。
             </p>
 
             <div class="banner-features">
                 <div>
-                    <h3>High Performance ORM</h3>
+                    <h3>高性能 ORM</h3>
                     <div>
                         <performance-chart yAxis="ms / SQLite query 10k records">
                             <performance-entry title="Sequelize" [value]="70.08"></performance-entry>
@@ -229,7 +224,7 @@
                 </div>
 
                 <div>
-                    <h3>Fastest MongoDB</h3>
+                    <h3>最快的 MongoDB</h3>
                     <div>
                         <performance-chart yAxis="ms / MongoDB query 10k records">
                             <performance-entry title="Mongoose" [value]="160.59"></performance-entry>
@@ -242,28 +237,28 @@
                 </div>
             </div>
             <div class="wrapper benchmark-link">
-                <a routerLink="/benchmarks">More information about our benchmarks</a>
+                <a routerLink="/benchmarks">关于我们的基准的更多信息</a>
             </div>
         </div>
 
         <div class="feature-block" style="text-align: center;">
-            <h2>MODULAR</h2>
+            <h2>模块化</h2>
             <p class="feature-text">
-                Split the application in multiple modules and keep together what belongs together.
+                将应用分割成多个模块并将本该一起的东西放在一起。
             </p>
 
             <image style="max-width: 506px; margin-top: 50px;" src="/assets/images/modular.png"></image>
         </div>
 
         <div class="feature-block">
-            <div class="overline">NOW</div>
-            <h2>LETS GO</h2>
+            <div class="overline">现在</div>
+            <h2>让我们出发吧</h2>
 
             <p class="feature-text">
-                Start now and get to know the new runtime type system in action.
+                开始了解崭新的运行时类型系统。
             </p>
 
-            <a class="button big" routerLink="/documentation/framework">Get started</a>
+            <a class="button big" routerLink="/documentation/framework">起步</a>
         </div>
 
     </main>
