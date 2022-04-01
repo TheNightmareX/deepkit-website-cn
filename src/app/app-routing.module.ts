@@ -67,43 +67,43 @@ import { DocORMCompositePrimaryKeyComponent } from './pages/documentation/orm/co
 
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', component: IndexPageComponent, data: { title: 'Welcome', startPage: true } },
-    { path: 'contact', pathMatch: 'full', component: ContactPageComponent, data: { title: 'Contact' } },
+    { path: '', pathMatch: 'full', component: IndexPageComponent, data: { title: '欢迎', startPage: true } },
+    { path: 'contact', pathMatch: 'full', component: ContactPageComponent, data: { title: '练习' } },
     {
         path: 'data-protection',
         component: DataProtectionPageComponent,
-        data: { title: 'Data protection' }
+        data: { title: '数据保护' }
     },
     {
         path: 'about-us',
         component: AboutUsComponent,
-        data: { title: 'About Deepkit' }
+        data: { title: '关于 Deepkit' }
     },
 
     {
         path: 'framework',
         component: FeaturesPageComponent,
-        data: { title: 'Framework Features' },
+        data: { title: '框架特性' },
     },
     {
         path: 'community',
         component: CommunityPageComponent,
-        data: { title: 'Community' },
+        data: { title: '社区' },
     },
     {
         path: 'benchmarks',
         loadChildren: () => import('./benchmarks/benchmarks.module').then(m => m.BenchmarksModule),
-        data: { title: 'Benchmarks' },
+        data: { title: '基准' },
     },
     {
         path: 'library/type',
         component: TypeComponent,
-        data: { title: 'Deepkit Type' },
+        data: { title: 'Deepkit 类型' },
     },
     {
         path: 'library',
         component: LibrariesComponent,
-        data: { title: 'Libraries' },
+        data: { title: '库' },
     },
     {
         path: 'library/orm',
@@ -134,7 +134,7 @@ const routes: Routes = [
     {
         path: 'library/desktop-ui',
         loadChildren: () => import('./desktop-ui/desktop-ui.module').then(m => m.DesktopUiModule),
-        data: { title: 'Angular Desktop UI' },
+        data: { title: 'Angular 桌面 UI' },
     },
 
     // {
