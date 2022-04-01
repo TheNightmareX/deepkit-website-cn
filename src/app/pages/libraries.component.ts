@@ -5,15 +5,15 @@ import { Component } from '@angular/core';
         <div class="page">
             <div class="wrapper">
                 <div class="overline">TYPESCRIPT</div>
-                <h2>LIBRARIES</h2>
+                <h2>库</h2>
 
                 <p class="feature-text">
-                    A collection of open source TypeScript libraries under MIT license that work standalone or in combination.
-                    Each library lives in its own NPM package, is carefully optimised, and follows modern best practises.
+                    一个在 MIT 许可下的开源 TypeScript 库的集合，可独立使用也可合并使用。
+                    每个库都存在于其专属的 NPM 包中，这些库经过精心优化，且遵循现代最佳实践。
                 </p>
 
                 <p class="feature-text">
-                    Progressively adopt Deepkit libraries one by one or use all together in Deepkit Framework.
+                    渐进式地依次采用 DeepKit 的库，或者在 DeepKit 框架中使用所有这些库。
                 </p>
 
                 <library-cards style="display: block; margin: 80px 0;"></library-cards>
