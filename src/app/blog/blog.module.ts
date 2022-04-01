@@ -63,11 +63,11 @@ class BlogListItem {
 @Component({
     template: `
         <div class="page wrapper">
-            <div class="overline">STAY INFORMED</div>
-            <h1>BLOG</h1>
+            <div class="overline">了解最新信息</div>
+            <h1>博客</h1>
 
             <div class="posts">
-                <post title="介绍 DeepKit 框架" by="Marc J. Schmidt" date="23. March 2022" url="introducing-deepkit-framework"></post>
+                <post title="介绍 DeepKit 框架" by="Marc J. Schmidt" date="23. 三月 2022" url="introducing-deepkit-framework"></post>
             </div>
         </div>
     `,
