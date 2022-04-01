@@ -22,9 +22,9 @@ import {Component} from '@angular/core';
                 </a>
             </nav>
             <nav class="links">
-                <a routerLink="/about-us">About us</a>
-                <a routerLink="/contact">Contact</a>
-                <a routerLink="/data-protection">Data protection</a>
+                <a routerLink="/about-us">关于我们</a>
+                <a routerLink="/contact">联系</a>
+                <a routerLink="/data-protection">数据保护</a>
             </nav>
         </div>
         <div class="wrapper made-in">

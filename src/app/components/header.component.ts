@@ -20,11 +20,11 @@ import { Router } from '@angular/router';
                 </svg>
             </a>
             <nav class="main">
-                <a routerLinkActive="active" routerLink="/framework">Framework</a>
-                <a routerLinkActive="active" routerLink="/library">Libraries</a>
-                <a routerLinkActive="active" routerLink="/community">Community</a>
-                <a routerLinkActive="active" routerLink="/blog">Blog</a>
-                <a routerLinkActive="active" routerLink="/documentation">Docs</a>
+                <a routerLinkActive="active" routerLink="/framework">框架</a>
+                <a routerLinkActive="active" routerLink="/library">库</a>
+                <a routerLinkActive="active" routerLink="/community">社区</a>
+                <a routerLinkActive="active" routerLink="/blog">博客</a>
+                <a routerLinkActive="active" routerLink="/documentation">文档</a>
 
                 <!--                <nav style="justify-content: flex-end;">-->
                 <!--                    <a routerLinkActive="active" routerLink="/blog">Blog</a>-->
