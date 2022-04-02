@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
                 <a routerLinkActive="active" routerLink="/community">社区</a>
                 <a routerLinkActive="active" routerLink="/blog">博客</a>
                 <a routerLinkActive="active" routerLink="/documentation">文档</a>
+                <a href="https://www.zhihu.com/people/TheNightmareX" target="_blank">译者</a>
 
                 <!--                <nav style="justify-content: flex-end;">-->
                 <!--                    <a routerLinkActive="active" routerLink="/blog">Blog</a>-->
