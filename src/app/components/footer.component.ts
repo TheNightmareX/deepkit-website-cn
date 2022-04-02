@@ -25,6 +25,7 @@ import {Component} from '@angular/core';
                 <a routerLink="/about-us">关于我们</a>
                 <a routerLink="/contact">联系</a>
                 <a routerLink="/data-protection">数据保护</a>
+                <a href="https://github.com/TheNightmareX/deepkit-website-cn" target="_blank">贡献翻译</a>
             </nav>
         </div>
         <div class="wrapper made-in">
